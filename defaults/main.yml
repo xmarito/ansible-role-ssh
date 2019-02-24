@@ -1,2 +1,11 @@
 ---
 # defaults file for ansible-role-ssh
+
+ssh_port: 22
+
+ssh_PermitRootLogin: "no"
+ssh_MaxAuthTries: "6"
+ssh_PubkeyAuthentication: "yes"
+ssh_PasswordAuthentication: "yes"
+ssh_ChallengeResponseAuthentication: "no"
+
