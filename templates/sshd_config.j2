@@ -42,7 +42,7 @@ PermitRootLogin {{ ssh_PermitRootLogin }}
 MaxAuthTries {{ ssh_MaxAuthTries  }}
 #MaxSessions 10
 
-PubkeyAuthentication {{ yes }}
+PubkeyAuthentication {{ ssh_PubkeyAuthentication }}
 
 # The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2
 # but this is overridden so installations will only check .ssh/authorized_keys
