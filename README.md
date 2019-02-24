@@ -1,2 +1,13 @@
-# ansible-role-ssh
-ssh設定を行うAnsible Roleです。
+ansible-role-monit
+=========
+
+CentOSのSSH設定するAnsible Roleです。
+
+
+
+License
+-------
+
+MIT
+
+
