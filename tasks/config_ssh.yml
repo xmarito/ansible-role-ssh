@@ -10,18 +10,3 @@
     mode: 0600
   notify: restart sshd
 
-- name: config - Setup /etc/pam.d/sshd
-  template:
-    src: "pam.d/sshd.j2"
-    dest: "/etc/pam.d/sshd"
-    owner: root
-    group: root
-    mode: 0644
-
-- name: config - Setup /etc/security/access.conf
-  template:
-    src: "security/access.conf.j2"
-    dest: "/etc/security/access.conf"
-    owner: root
-    group: root
-    mode: 0644

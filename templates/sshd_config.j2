@@ -36,7 +36,7 @@ SyslogFacility AUTHPRIV
 
 # Authentication:
 
-#LoginGraceTime 2m
+LoginGraceTime {{ ssh_LoginGraceTime }}
 PermitRootLogin {{ ssh_PermitRootLogin }}
 #StrictModes yes
 MaxAuthTries {{ ssh_MaxAuthTries  }}
@@ -62,8 +62,7 @@ AuthorizedKeysFile	.ssh/authorized_keys
 #IgnoreRhosts yes
 
 # To disable tunneled clear text passwords, change to no here!
-#PasswordAuthentication yes
-#PermitEmptyPasswords no
+#ermitEmptyPasswords no
 PasswordAuthentication {{ ssh_PasswordAuthentication }}
 
 # Change to no to disable s/key passwords
@@ -78,7 +77,7 @@ ChallengeResponseAuthentication {{ ssh_ChallengeResponseAuthentication }}
 #KerberosUseKuserok yes
 
 # GSSAPI options
-GSSAPIAuthentication yes
+GSSAPIAuthentication noGSSAPIAuthentication 
 GSSAPICleanupCredentials no
 #GSSAPIStrictAcceptorCheck yes
 #GSSAPIKeyExchange no
@@ -100,10 +99,10 @@ UsePAM yes
 #AllowAgentForwarding yes
 #AllowTcpForwarding yes
 #GatewayPorts no
-X11Forwarding yes
+X11Forwarding no
 #X11DisplayOffset 10
 #X11UseLocalhost yes
-#PermitTTY yes
+PermitTTY yes
 #PrintMotd yes
 #PrintLastLog yes
 #TCPKeepAlive yes
@@ -114,9 +113,9 @@ X11Forwarding yes
 #ClientAliveInterval 0
 #ClientAliveCountMax 3
 #ShowPatchLevel no
-#UseDNS yes
+UseDNS no
 #PidFile /var/run/sshd.pid
-#MaxStartups 10:30:100
+MaxStartups {{ ssh_MaxStartups }}
 #PermitTunnel no
 #ChrootDirectory none
 #VersionAddendum none
@@ -139,3 +138,15 @@ Subsystem	sftp	/usr/libexec/openssh/sftp-server
 #	AllowTcpForwarding no
 #	PermitTTY no
 #	ForceCommand cvs server
+
+{% if not ssh_AllowUsers %}
+#AllowUsers none
+{% else %}
+AllowUsers {{ ssh_AllowUsers }}
+{% endif %}
+
+{% if not ssh_MatchUserSettings %}
+#Match User settings none
+{% else %}
+
+{% endif %}
