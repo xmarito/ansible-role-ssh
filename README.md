@@ -1,4 +1,4 @@
-ansible-role-monit
+ansible-role-ssh
 =========
 
 CentOSのSSH設定するAnsible Roleです。
